@@ -1,0 +1,21 @@
+﻿@using UserCatalogService.DataBase.Repositories.Interfaces;
+
+<tr>
+    <td><input type="text" @bind="User.Name" /></td>
+    <td><input type="text" @bind="User.Surname" /></td>
+    <td><input type="text" @bind="User.Patronymic" /></td>
+    <td><input type="text" @bind="User.Login" /></td>
+    <td>
+        <button class="btn btn-primary" @onclick="() => UpdateUser.InvokeAsync(User)">Обновить</button>
+        <button class="btn btn-danger" @onclick="() => DeleteUser.InvokeAsync(User)">Удалить</button>
+    </td>
+</tr>
+
+@code {
+    [Parameter]
+    public UserModel User { get; set; } = null!;
+    [Parameter]
+    public EventCallback<UserModel> UpdateUser { get; set; }
+    [Parameter]
+    public EventCallback<UserModel> DeleteUser { get; set; }
+}

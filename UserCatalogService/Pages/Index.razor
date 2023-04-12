@@ -1,0 +1,35 @@
+﻿@page "/"
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Имя</td>
+                <td>Фамилия</td>
+                <td>Отчество</td>
+                <td>Домен\Логин</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Users == null)
+            {
+                <tr>Загрузка данных.</tr>
+            }
+            else if (Users.Count == 0)
+            {
+                <tr>Отсутствуют данные в списке.</tr>
+            }
+            else
+            {
+                @foreach (var user in Users)
+                {
+                    <IndividualUserComponent User="user" UpdateUser="UpdateUser" DeleteUser="DeleteUser"/>
+                }
+            }
+            <AddUserComponent AddUser="AddUser" User="User"></AddUserComponent>
+        </tbody>
+    </table>
+</div>
+
+<ShowMessageComponent Message="Message"></ShowMessageComponent>

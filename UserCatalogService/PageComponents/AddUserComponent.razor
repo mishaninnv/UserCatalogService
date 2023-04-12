@@ -1,0 +1,14 @@
+﻿<tr>
+    <td><input type="text" placeholder="Имя" @bind="User.Name" /></td>
+    <td><input type="text" placeholder="Фамилия" @bind="User.Surname" /></td>
+    <td><input type="text" placeholder="Отчество" @bind="User.Patronymic" /></td>
+    <td><input type="text" placeholder="Домен\Логин" @bind="User.Login" /></td>
+    <td><button class="btn btn-success" @onclick="() => AddUser.InvokeAsync(User)">Добавить пользователя</button></td>
+</tr>
+
+@code {
+    [Parameter] 
+    public EventCallback<UserModel> AddUser { get; set; }
+    [Parameter]
+    public UserModel User { get; set; } = null!;
+}

@@ -1,0 +1,19 @@
+﻿@using UserCatalogService.Enums
+
+@if (Message.Status == StatusEnum.Danger)
+{
+    <span class="text-danger">@Message.Message</span>
+}
+else if (Message.Status == StatusEnum.Success)
+{
+    <span class="text-success">@Message.Message</span>
+}
+else if (Message.Status == StatusEnum.Primary)
+{
+    <span class="text-primary">@Message.Message</span>
+}
+
+@code {
+    [Parameter]
+    public MessageModel Message { get; set; } = null!;
+}
